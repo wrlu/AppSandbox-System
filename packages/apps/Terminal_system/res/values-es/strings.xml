@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <string name="app_label">Terminal</string>
+    <string name="menu_new_tab">Nueva pestaña</string>
+    <string name="menu_close_tab">Cerrar pestaña</string>
+    <string name="menu_item_settings">Ajustes</string>
+    <string name="screen_settings">Ajustes de pantalla</string>
+    <string name="fullscreen_mode_title">Pantalla completa</string>
+    <string name="screen_orientation_title">Orientación de la pantalla</string>
+    <string name="text_settings">Configuración de texto</string>
+    <string name="font_size_title">Tamaño de letra</string>
+    <string name="text_colors_title">Colores de texto</string>
+    <string name="volumekey_title">Teclas de volumen como entrada</string>
+    <string name="volumekey_summary">Teclas de volumen arriba y abajo se comportarán como las teclas de arriba y abajo</string>
+</resources>

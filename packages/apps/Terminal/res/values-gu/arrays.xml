@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+     implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <string-array name="screen_orientation_labels">
+        <item>સ્વચલિત</item>
+        <item>લેન્ડસ્કેપ</item>
+        <item>પોર્ટરેટ</item>
+    </string-array>
+    <string-array name="font_size_labels">
+        <item>10 પૉઇંટ</item>
+        <item>12 પૉઇંટ</item>
+        <item>14 પૉઇંટ</item>
+        <item>16 પૉઇંટ</item>
+        <item>20 પૉઇંટ</item>
+        <item>24 પૉઇંટ</item>
+    </string-array>
+    <string-array name="text_colors_labels">
+        <item>સફેદ પર કાળું ટેક્સ્ટ</item>
+        <item>કાળા પર સફેદ ટેક્સ્ટ</item>
+        <item>કાળા પર લીલું ટેક્સ્ટ</item>
+        <item>કાળા પર અંબર ટેક્સ્ટ</item>
+        <item>કાળા પર લાલ ટેક્સ્ટ</item>
+        <item>કાળા પર આસમાની ટેક્સ્ટ</item>
+    </string-array>
+</resources>

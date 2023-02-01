@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+     implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <string-array name="screen_orientation_labels">
+        <item>స్వయంచాలకం</item>
+        <item>సమతలదిశ</item>
+        <item>పటం</item>
+    </string-array>
+    <string-array name="font_size_labels">
+        <item>10 పాయింట్లు</item>
+        <item>12 పాయింట్లు</item>
+        <item>14 పాయింట్లు</item>
+        <item>16 పాయింట్లు</item>
+        <item>20 పాయింట్లు</item>
+        <item>24 పాయింట్లు</item>
+    </string-array>
+    <string-array name="text_colors_labels">
+        <item>తెలుపు పైన నలుపు టెక్స్ట్</item>
+        <item>నలుపు పైన తెలుపు టెక్స్ట్</item>
+        <item>నలుపు పైన ఆకుపచ్చ టెక్స్ట్</item>
+        <item>నలుపు పైన అంబర్ టెక్స్ట్</item>
+        <item>నలుపు పైన ఎరుపు టెక్స్ట్</item>
+        <item>నలుపు పైన నీలం టెక్స్ట్</item>
+    </string-array>
+</resources>

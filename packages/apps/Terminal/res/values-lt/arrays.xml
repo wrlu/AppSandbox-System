@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+     implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <string-array name="screen_orientation_labels">
+        <item>Automatinis</item>
+        <item>Gulsčias</item>
+        <item>Stačias</item>
+    </string-array>
+    <string-array name="font_size_labels">
+        <item>10 pt</item>
+        <item>12 pt</item>
+        <item>14 pt</item>
+        <item>16 pt</item>
+        <item>20 pt</item>
+        <item>24 pt</item>
+    </string-array>
+    <string-array name="text_colors_labels">
+        <item>Juodas tekstas ant balto</item>
+        <item>Baltas tekstas ant juodo</item>
+        <item>Žalias tekstas ant juodo</item>
+        <item>Gintarinis tekstas ant juodo</item>
+        <item>Raudonas tekstas ant juodo</item>
+        <item>Mėlynas tekstas ant juodo</item>
+    </string-array>
+</resources>

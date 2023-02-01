@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+     implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <string-array name="screen_orientation_labels">
+        <item>Automatski</item>
+        <item>Krajolik</item>
+        <item>Portret</item>
+    </string-array>
+    <string-array name="font_size_labels">
+        <item>10 točaka</item>
+        <item>12 točaka</item>
+        <item>14 točaka</item>
+        <item>16 točaka</item>
+        <item>20 točaka</item>
+        <item>24 točke</item>
+    </string-array>
+    <string-array name="text_colors_labels">
+        <item>Crni tekst na bijelom</item>
+        <item>Bijeli tekst na crnom</item>
+        <item>Zeleni tekst na crnom</item>
+        <item>Narančasti tekst na crnom</item>
+        <item>Crveni tekst na crnom</item>
+        <item>Plavi tekst na crnom</item>
+    </string-array>
+</resources>
