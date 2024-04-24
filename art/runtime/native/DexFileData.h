@@ -24,7 +24,7 @@
 
 #define MAX_DEX_FILE_HEADER_LEN 500
 
-namespace hssl {
+namespace appsandbox {
 
 class DexFileData {
 public:

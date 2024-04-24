@@ -43,7 +43,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toolbar;
 
-import com.hssl.app.terminal.R;
+import com.wrlus.app.terminal.R;
 
 /**
  * Activity that displays all {@link Terminal} instances running in a bound

@@ -169,15 +169,15 @@ int main(int argc, char* argv[]) {
 
   // This program runs with CAP_SETUID and CAP_SETGID capabilities on Android
   // production devices. Check user id of caller --- must be 'shell' or 'root'.
-  if (getuid() != AID_SHELL && getuid() != AID_ROOT && getuid() != AID_SYSTEM) {
-    error(1, 0, "only 'shell' or 'root' or 'system' users can run this program");
+  if (getuid() != AID_SHELL && getuid() != AID_ROOT) {
+    error(1, 0, "only 'shell' or 'root' users can run this program");
   }
 
   // Some devices can disable running run-as, such as Chrome OS when running in
   // non-developer mode.
-  // if (android::base::GetBoolProperty("ro.boot.disable_runas", false)) {
-  //   error(1, 0, "run-as is disabled from the kernel commandline");
-  // }
+  if (android::base::GetBoolProperty("ro.boot.disable_runas", false)) {
+    error(1, 0, "run-as is disabled from the kernel commandline");
+  }
 
   char* pkgname = argv[1];
   int cmd_argv_offset = 2;
@@ -226,6 +226,9 @@ int main(int argc, char* argv[]) {
     error(1, 0, "package not an application: %s", pkgname);
   }
 
+  // Modified for appsandbox
+  // Remove debuggable flag check for run-as.
+  // 
   // Reject any non-debuggable package.
   // if (!info.debuggable) {
   //   error(1, 0, "package not debuggable: %s", pkgname);

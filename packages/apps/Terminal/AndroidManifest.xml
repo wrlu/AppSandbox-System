@@ -14,7 +14,7 @@
 -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-        package="com.hssl.app.terminal"
+        package="com.wrlus.app.terminal"
         android:sharedUserId="android.uid.shell">
 
     <uses-sdk android:minSdkVersion="23" android:targetSdkVersion="29"/>

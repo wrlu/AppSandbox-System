@@ -27,7 +27,7 @@ import android.view.MenuItem;
 
 import static com.android.terminal.Terminal.TAG;
 
-import com.hssl.app.terminal.R;
+import com.wrlus.app.terminal.R;
 
 /**
  * Settings for Terminal.

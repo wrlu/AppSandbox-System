@@ -249,4 +249,4 @@ org\.chromium\.arc\..*
 
 ###################################################
 # Packages used for AppSandbox
-com\.hssl\.app\.sandbox\..*
+com\.wrlus\.app\.sandbox\..*

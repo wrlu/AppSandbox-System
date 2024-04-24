@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+# Created by Yiwen Xu on 2022/6.
+#
 
 echo "Copy the specified files to aosp"
 

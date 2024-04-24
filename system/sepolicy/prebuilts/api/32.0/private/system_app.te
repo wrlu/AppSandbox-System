@@ -188,12 +188,7 @@ neverallow system_app shell_data_file:dir { no_w_dir_perms open search read };
 neverallow system_app shell_data_file:file { open read ioctl lock };
 
 ###
-### Add for app sandbox
+### Modified for appsandbox
+### Add some selinux policies for appsandbox frontend unix-socket traffic.
 ###
-
 allow { untrusted_app_all priv_app platform_app system_server } system_app:unix_stream_socket { connectto write };
-get_prop(priv_app, sandbox_prop)
-get_prop(platform_app, sandbox_prop)
-get_prop(system_server, sandbox_prop)
-get_prop(system_app, sandbox_prop)
-set_prop(system_app, sandbox_prop)

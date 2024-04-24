@@ -55,6 +55,7 @@
 #include "scoped_thread_state_change-inl.h"
 #include "well_known_classes.h"
 
+// Modified for appsandbox
 #include "DexFileData.h"
 
 namespace art {
@@ -288,8 +289,10 @@ static jobject DexFile_openInMemoryDexFilesNative(JNIEnv* env,
       jbyte* destination = reinterpret_cast<jbyte*>(dex_data.Begin());
       env->GetByteArrayRegion(array, start, end - start, destination);
     }
+
+    // Modified for appsandbox
     // Write this memory dex file to AppSandbox
-    hssl::writeInMemoryDex(dex_data.Begin(), static_cast<size_t>(end - start));
+    appsandbox::writeInMemoryDex(dex_data.Begin(), static_cast<size_t>(end - start));
 
     dex_mem_maps.push_back(std::move(dex_data));
   }
@@ -320,8 +323,9 @@ static jobject DexFile_openDexFileNative(JNIEnv* env,
     return nullptr;
   }
 
+  // Modified for appsandbox
   // Write this dex file to AppSandbox
-  hssl::writeDex(sourceName.c_str());
+  appsandbox::writeDex(sourceName.c_str());
 
   std::vector<std::string> error_msgs;
   const OatFile* oat_file = nullptr;
