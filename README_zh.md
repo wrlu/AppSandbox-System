@@ -1,5 +1,5 @@
 # AppSandbox-System
-The modified AOSP system edition of App Sandbox
+AOSP修改系统版本的App Sandbox，基于 AOSP android-12.1.0_r5 (SP2A.220505.002) 分支。
 
 ## Features & Modified projects
 ### Dex hook

@@ -1,5 +1,5 @@
 # AppSandbox-System
-The modified AOSP system edition of App Sandbox
+The modified AOSP system edition of App Sandbox, based on AOSP android-12.1.0_r5 (SP2A.220505.002) branch.
 
 ## Features & Modified projects
 ### Dex hook
