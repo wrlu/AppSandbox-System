@@ -9,6 +9,7 @@ The modified AOSP system edition of App Sandbox, based on AOSP android-12.1.0_r5
 * Added `packages/apps/Terminal`: Lineage OS Terminal application, run as shell permission.
 * Added `external/libvterm`: Dependency of Lineage OS Terminal application.
 * Modified `system/core/run-as`: Switch target application's permission but ignore debuggable flags, can access private files of applications.
+* Modified `system/ca-certificates`: Add charles (5f88ea7a.0) and burp (9a5ba575.0) root certificates to system.
 
 ### SELinux policies
 * Modified `system/sepolicy`：Modified and added serveral SELinux policies.
@@ -30,4 +31,4 @@ The modified AOSP system edition of App Sandbox, based on AOSP android-12.1.0_r5
 * Import frida-gadget.
 
 ## Credits
-* Fork from [AppSandbox-Framework](https://github.com/wrlu/AppSandbox-Framework) project, keep useful features and delete unstable features.
+* Fork from AppSandbox-Framework project, keep useful features and delete unstable features.
