@@ -187,10 +187,8 @@ neverallow system_app fuse_device:chr_file *;
 neverallow system_app shell_data_file:dir { no_w_dir_perms open search read };
 neverallow system_app shell_data_file:file { open read ioctl lock };
 
-###
-### Modified for appsandbox
-### Add some selinux policies for appsandbox frontend unix-socket traffic.
-###
+# Modified for appsandbox
+# Add selinux policy for appsandbox frontend unix-socket traffic.
 allow { 
   untrusted_app_all 
   priv_app 
@@ -198,3 +196,13 @@ allow {
   system_app 
   system_server 
 } system_app:unix_stream_socket { connectto write };
+
+# Add selinux policy for appsandbox frontend set watched uid.
+set_prop(system_app, sandbox_watched_prop)
+
+# Add selinux policy for app get watched uid.
+get_prop(untrusted_app_all, sandbox_watched_prop)
+get_prop(priv_app, sandbox_watched_prop)
+get_prop(platform_app, sandbox_watched_prop)
+get_prop(system_app, sandbox_watched_prop)
+get_prop(system_server, sandbox_watched_prop)
