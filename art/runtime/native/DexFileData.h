@@ -141,7 +141,7 @@ int writeInMemoryDex(void *buffer, size_t length) {
     DexFileData dexFileData(getuid(), getpid(), time(nullptr), IN_MEMORY_DEX_FILENAME);
     int udsFd = connectAppSandboxDexUDS();
     dexFileData.writeBasicInfo(udsFd);
-    
+    // Send memory dex buffer directly.
     size_t bytes_sent = send(udsFd, buffer, length, 0);
     if (bytes_sent != length) {
         close(udsFd);
