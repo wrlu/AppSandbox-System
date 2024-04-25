@@ -191,4 +191,10 @@ neverallow system_app shell_data_file:file { open read ioctl lock };
 ### Modified for appsandbox
 ### Add some selinux policies for appsandbox frontend unix-socket traffic.
 ###
-allow { untrusted_app_all priv_app platform_app system_server } system_app:unix_stream_socket { connectto write };
+allow { 
+  untrusted_app_all 
+  priv_app 
+  platform_app 
+  system_app 
+  system_server 
+} system_app:unix_stream_socket { connectto write };
