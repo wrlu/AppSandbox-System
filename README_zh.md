@@ -16,6 +16,7 @@ AOSP修改系统版本的App Sandbox，基于 AOSP android-12.1.0_r5 (SP2A.22050
     * 允许 App 和 system_server 写入 AppSandbox 的 Unix Socket
     * 指定 com.wrlus.app.terminal 为shell uid和 shell 标签
     * 取消了只允许 com.android.shell 包名成为 shell uid 和 shell 标签的限制
+    * 新增 property 标签用于存储监视 uid，并允许 system_app 读写。
 
 ### Build scripts
 * 修改了 `build/soong/scripts/check_boot_jars`：新增libcore包名白名单`com.wrlus.app.sandbox.*`；

@@ -16,6 +16,7 @@ The modified AOSP system edition of App Sandbox, based on AOSP android-12.1.0_r5
     * Allow app and system_server write unix socket to AppSandbox
     * Set shell uid and label for com.wrlus.app.terminal
     * Disable limitation of only allow com.android.shell package uses shell uid and label.
+    * Add property label for watched uid, and allow system_app read and write.
 
 ### Build scripts
 * Modified `build/soong/scripts/check_boot_jars`：Add `com.wrlus.app.sandbox.*` to libcore package name allowlist.
@@ -25,7 +26,6 @@ The modified AOSP system edition of App Sandbox, based on AOSP android-12.1.0_r5
 * AppSandbox-FrontEnd application can receive data from system and save, see also: https://github.com/wrlu/AppSandbox-FrontEnd
 
 ## TODO List
-* Import Charles and Burp root certificates to system certificates storage.
 * Custom platform key.
 * Import LSPosed.
 * Import frida-gadget.
