@@ -22,7 +22,8 @@
 #define FS_SDCARD_PATH "/sdcard"
 #define FS_DATA_APP_PATH "/data/app"
 
-#define MAX_DEX_FILE_HEADER_LEN 500
+#define MAX_HEADER_LEN 500
+#define FILE_RW_BUF_SIZE 10240
 
 namespace appsandbox {
 
@@ -30,22 +31,20 @@ class DexFileData {
 public:
     int uid;
     int pid;
-    std::string packageName;
     long timestamp;
     const char *sourceName;
 
-    DexFileData(): uid(-1), pid(-1), packageName(""), timestamp(-1), sourceName(nullptr) {}
+    DexFileData(): uid(-1), pid(-1), timestamp(-1), sourceName(nullptr) {}
     DexFileData(int uid, int pid, time_t timestamp, const char *sourceName):
-        uid(uid), pid(pid), packageName(""), timestamp(timestamp), sourceName(sourceName) {}
+        uid(uid), pid(pid), timestamp(timestamp), sourceName(sourceName) {}
 
     int writeBasicInfo(int fd) {
-        if (fd < 0) {
-            return -1;
-        }
-        char headerStr[MAX_DEX_FILE_HEADER_LEN];
-        snprintf(headerStr, MAX_DEX_FILE_HEADER_LEN, "%d\n%d\n%s\n%ld\n%s\n", uid, pid, packageName.c_str(), timestamp, sourceName);
+        if (fd < 0) return -1;
 
-        int bytes_sent = send(fd, headerStr, strlen(headerStr), 0);
+        char headerStr[MAX_HEADER_LEN];
+        snprintf(headerStr, MAX_HEADER_LEN, "%d\n%d\n%ld\n%s\n", uid, pid, timestamp, sourceName);
+
+        int bytes_sent = send(fd, headerStr, strlen(headerStr), MSG_WAITALL);
         int err = 0;
         if (bytes_sent < 0) {
             err = -1;
@@ -54,22 +53,19 @@ public:
     }
 
     int writeDexFile(int fd) {
-        if (fd < 0) {
-            return -1;
-        }
-        if (sourceName == nullptr) {
-            return -1;
-        }
+        if (fd < 0) return -1;
+        if (sourceName == nullptr) return -1;
+
         FILE *sourceFd = fopen(sourceName, "r");
         if (sourceFd == nullptr) {
             return -1;
         }
-        uint8_t *buffer = new uint8_t[10240];
+        uint8_t *buffer = new uint8_t[FILE_RW_BUF_SIZE];
 
         int err = 0;
         while (feof(sourceFd) != 1) {
-            int c = fread(buffer, 1, 1024, sourceFd);
-            int bytes_sent = send(fd, buffer, c, 0);
+            int c = fread(buffer, sizeof(char), sizeof(buffer) - 1, sourceFd);
+            int bytes_sent = send(fd, buffer, c, MSG_WAITALL);
             if (bytes_sent != c) {
                 err = -1;
                 break;
@@ -86,9 +82,8 @@ bool strstart(const char *str, const char *prefix) {
 }
 
 bool isHotfixDexPath(const char *sourceName) {
-    if (sourceName == nullptr) {
-        return false;
-    }
+    if (sourceName == nullptr) return false;
+
     // Dex file in read-only partition should not be a hot patch.
     if (!( strstart(sourceName, FS_DATA_PATH) 
         || strstart(sourceName, FS_STORAGE_PATH)
@@ -104,7 +99,7 @@ bool isHotfixDexPath(const char *sourceName) {
     return true;
 }
 
-int connectAppSandboxDexUDS() {
+int connectDexHookService() {
     struct sockaddr_un server_address;
     memset(&server_address, 0, sizeof(server_address));
     server_address.sun_family = AF_UNIX;
@@ -123,25 +118,21 @@ int connectAppSandboxDexUDS() {
 }
 
 int checkWatchedUid(int uid) {
-    if (uid < 10000) {
-        return -1;
-    }
+    if (uid < 10000) return -1;
+
     return 0;
 }
 
 int writeDex(const char *sourceName){
-    if (sourceName == nullptr) {
-        return -1;
-    }
+    if (sourceName == nullptr)  return -1;
+
     int selfUid = getuid();
 
-    if (checkWatchedUid(selfUid) != 0) {
-        return -1;
-    }
+    if (checkWatchedUid(selfUid) != 0) return -1;
 
     if (isHotfixDexPath(sourceName)) {
         DexFileData dexFileData(selfUid, getpid(), time(nullptr), sourceName);
-        int udsFd = connectAppSandboxDexUDS();
+        int udsFd = connectDexHookService();
         int err = dexFileData.writeBasicInfo(udsFd);
         if (err != 0) {
             close(udsFd);
@@ -155,15 +146,13 @@ int writeDex(const char *sourceName){
 }
 
 int writeInMemoryDex(void *buffer, size_t length) {
-    if (buffer == nullptr || length <= 0) {
-        return -1;
-    }
+    if (buffer == nullptr || length <= 0) return -1;
+        
     int selfUid = getuid();
-    if (checkWatchedUid(selfUid) != 0) {
-        return -1;
-    }
+    if (checkWatchedUid(selfUid) != 0) return -1;
+
     DexFileData dexFileData(selfUid, getpid(), time(nullptr), IN_MEMORY_DEX_FILENAME);
-    int udsFd = connectAppSandboxDexUDS();
+    int udsFd = connectDexHookService();
     int err = dexFileData.writeBasicInfo(udsFd);
     if (err != 0) {
         close(udsFd);
